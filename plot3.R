@@ -1,8 +1,4 @@
-# Load the data into R
-fname <- "filtered.txt"
-system("head -1 household_power_consumption.txt > filtered.txt")
-system("grep \"^[12]\\/2\\/2007;\" household_power_consumption.txt >> filtered.txt")
-vals <- read.table(fname, header=TRUE, sep=";")
+source("load.R")
 
 vals$dt <- strptime(paste(vals$Date, vals$Time,sep=","), format='%d/%m/%Y,%H:%M:%S')
 png(filename="plot3.png", width=480, height=480)
